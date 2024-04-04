@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { environment } from '../environment/environment';
 import { BehaviorSubject } from 'rxjs';
+import { MessaageResponse } from '../app/response/message.response';
 
 
 @Injectable({
@@ -9,10 +10,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessagingService implements OnInit {
 
-    public currentMessage = new BehaviorSubject(null);
+    public currentMessage = new BehaviorSubject("");
 
 
-    message: any = null;
+    message!: MessaageResponse;
     ngOnInit(): void {
         // this.requestPermission();
         // this.listen();
@@ -39,9 +40,11 @@ export class MessagingService implements OnInit {
         const messaging = getMessaging();
         onMessage(messaging, (payload) => {
             console.log('Message received. ', payload);
-            this.message = payload;
-            
-            this.currentMessage.next(this.message);
+            this.message = payload as MessaageResponse;
+            this.currentMessage.next(this.message.notification.body);
+            this.currentMessage.subscribe((res)=>{
+              alert(this.message.notification.body);  
+            })
         });
     }
 }

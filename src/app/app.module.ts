@@ -7,6 +7,7 @@ import { environment } from '../environment/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 
 initializeApp(environment.firebase);
@@ -18,6 +19,7 @@ initializeApp(environment.firebase);
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
     // AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],

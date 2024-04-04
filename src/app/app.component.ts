@@ -11,7 +11,8 @@ import { MessagingService } from '../service/messaging.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'massage-service';
+  public title = '';
+  public message = '';
 
   constructor(private _message: MessagingService){
     this._message.requestPermission();
@@ -20,10 +21,13 @@ export class AppComponent {
     
   }
 
-  message: any = null;
   ngOnInit(): void {
     // this.requestPermission();
     // this.listen();
+  }
+
+  public sendNotification(){
+    
   }
 
   // requestPermission() {
