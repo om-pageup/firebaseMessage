@@ -1,25 +1,32 @@
-
-<div class="container-fluid">
-  <div class="row mt-5">
+<ng-container *ngIf="isadmin">
+  <div class="container-fluid">
+    <div class="row mt-5">
       <div class="col"></div>
       <div class="col-4">
-          <div class="card shadow">
-              <div class="card-body">
-                <form>
-                  <div class="mb-3">
-                    <label  class="form-label">Title</label>
-                    <input type="text" class="form-control" [(ngModel)]="title" name="title">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Message</label>
-                    <input type="text" class="form-control" [(ngModel)]="message" name="message">
-                  </div>
-                  
-                  <button type="submit" class="btn btn-primary" (click)="sendNotification()">Send Noti</button>
-                </form>
+        <div class="card shadow">
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" [(ngModel)]="title" name="title">
               </div>
+              <div class="mb-3">
+                <label class="form-label">Message</label>
+                <input type="text" class="form-control" [(ngModel)]="message" name="message">
+              </div>
+
+              <button type="submit" class="btn btn-primary" (click)="sendNotification()">Send Noti</button>
+            </form>
           </div>
+        </div>
       </div>
       <div class="col"></div>
+    </div>
   </div>
-</div>
+</ng-container>
+
+<ng-container *ngIf="!isadmin">
+  <div class="container">
+    <h3>Welcome User</h3>
+  </div>
+</ng-container>

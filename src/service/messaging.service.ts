@@ -20,6 +20,7 @@ export class MessagingService implements OnInit {
         // const messaging = firebase.
         // messaging.
     }
+    
     public requestPermission() {
         const messaging = getMessaging();
         getToken(messaging,
