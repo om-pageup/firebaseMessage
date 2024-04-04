@@ -25,9 +25,9 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    // localStorage.setItem("user", "admin");
-    // this.getAllTOken();
-    // this.getToken();
+    localStorage.setItem("user", "admin");
+    this.getAllTOken();
+    this.getToken();
   }
   
   public sendNotification(){
@@ -60,7 +60,8 @@ export class AppComponent {
 
 
   private getAllTOken(){
-    this._httpClient.get('url').subscribe({
+    const url: string = "https://660e7bda356b87a55c4f30c8.mockapi.io/api/save-token"
+    this._httpClient.get(url).subscribe({
       next: (res: any) =>{
         console.log(res);
       },
