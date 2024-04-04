@@ -20,6 +20,7 @@ export class MessagingService implements OnInit {
         // const messaging = firebase.
         // messaging.
     }
+    
     public requestPermission() {
         const messaging = getMessaging();
         getToken(messaging,
@@ -43,7 +44,7 @@ export class MessagingService implements OnInit {
             this.message = payload as MessaageResponse;
             this.currentMessage.next(this.message.notification.body);
             this.currentMessage.subscribe((res)=>{
-              alert(this.message.notification.body);  
+              alert(res);  
             })
         });
     }
