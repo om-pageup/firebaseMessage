@@ -9,20 +9,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
-export class MessagingService implements OnInit {
-
-    public currentMessage = new BehaviorSubject("");
-
-    constructor(private _httpClient: HttpClient){}
-
+export class MessagingService  {
 
     message!: MessaageResponse;
-    ngOnInit(): void {
-        // this.requestPermission();
-        // this.listen();
-        // const messaging = firebase.
-        // messaging.
-    }
+
+    constructor(private _httpClient: HttpClient) { }
 
     public requestPermission() {
         const messaging = getMessaging();
@@ -46,21 +37,18 @@ export class MessagingService implements OnInit {
         onMessage(messaging, (payload) => {
             console.log('Message received. ', payload);
             this.message = payload as MessaageResponse;
-            this.currentMessage.next(this.message.notification.body);
-            // this.currentMessage.subscribe((res)=>{
-              alert(this.message.notification.body);  
-            // })
+            alert(this.message.notification.body);
         });
     }
 
 
-    private saveToken(token:string){
+    private saveToken(token: string) {
         const url: string = "https://660e7bda356b87a55c4f30c8.mockapi.io/api/save-token";
-        this._httpClient.post(url, token).subscribe({
-            next: (res) =>{
+        this._httpClient.post(url, { token: token }).subscribe({
+            next: (res) => {
                 console.log(res);
             },
-            error: (err) =>{
+            error: (err) => {
                 console.log(err);
             }
         })
