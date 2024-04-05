@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MessagingService } from '../service/messaging.service';
-// import { PostMessage } from './model/Post.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PostMessage } from './model/post.model';
 
